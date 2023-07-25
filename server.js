@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require ("fs")
+const db = require ("./db/db.json")
 
 const PORT = process.env.PORT || 3001;
 
@@ -19,10 +20,7 @@ app.get('/notes', (req, res) =>
 );
 
 app.get('/api/notes', (req, res) =>{
-    fs.readFile('db/db.json', 'utf8', (error, data) =>{
-        res.json(data)
-    }
-  );
+res.json (db)
 });
 
 app.listen(PORT, () =>
