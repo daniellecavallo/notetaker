@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fs = require ("fs")
 
 const PORT = process.env.PORT || 3001;
 
@@ -17,7 +18,7 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
-app.get('/notes', (req, res) =>{
+app.get('/api/notes', (req, res) =>{
     fs.readFile('db/db.json', 'utf8', (error, data) =>{
         res.json(data)
     }
